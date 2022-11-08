@@ -1,0 +1,50 @@
+[
+  {
+    "service_name": "Flight Reservation",
+    "service_img": "https://i.ibb.co/fYb4c34/tour-visa.jpg",
+    "duration": "3 days",
+    "price": "$149",
+    "description": "All the travelers around the world are traveling frequently for a vacation ,business trip , corporate meetings ,exploring variety of places , meeting relatives and various other things. But the reason may be different but all should know the procedure of online flight reservation as there is no middle man involved and there are no extra charges for air flight reservation. It is the simplest way to grab the best deals as you have the choice to compare the deals with other websites. By getting the flight ticket reservation you not only hit upon the right kind of offer but also save a lots of money by being sensible.",
+    "county_name": "Bangladesh"
+  },
+  {
+    "service_name": "Tour Visa Process",
+    "service_img": "https://i.ibb.co/X5b7VNB/tour-visa-process.jpg",
+    "duration": "12 days",
+    "price": "$200",
+    "description": "Tourist visa applications are usually processed within two weeks. But, the processing time may take less or more than two weeks— it depends on your home residence, the season, and the embassy’s workload.",
+    "county_name": "Bangladesh"
+  },
+  {
+    "service_name": "Hotel Booking",
+    "service_img": "https://i.ibb.co/4F3NGmS/hotel-booking.jpg",
+    "duration": "7 days",
+    "price": "$99",
+    "description": "I'm on a mission to help people discover the real value of travel — to inspire, to give more reasons, to make it easy — for you to go. My company was founded back in 2021, and since then, i’ve imagined and created some of the most well-loved products for travelers all around the world.",
+    "county_name": "Bangladesh"
+  },
+  {
+    "service_name": "Car Hire",
+    "service_img": "https://i.ibb.co/q50VXRV/car-hire.jpg",
+    "duration": "5 days",
+    "price": "$99",
+    "description": "The freedom to explore at your own will, a practical way to transport the family around, avoidance of public transport… whatever your reasons for hiring a car on holiday, the most important thing is getting a good deal that works for you. Finding the best car hire deal goes far beyond price.",
+    "county_name": "Bangladesh"
+  },
+  {
+    "service_name": "Tour Guide",
+    "service_img": "https://i.ibb.co/VvXWRYR/tour-guide.jpg",
+    "duration": "5 days",
+    "price": "$59",
+    "description": "My service is designed for those for whom traveling is not only a recreation but also a story, new information, and inspiration. For those who want to know more and get the most impressions of their trip!",
+    "county_name": "Bangladesh"
+  },
+  {
+    "service_name": "Team Building Experiences",
+    "service_img": "https://i.ibb.co/wKLtR3q/Team-Building-Experiences.jpg",
+    "duration": "8 days",
+    "price": "$150",
+    "description": "Most team-building activities elicit embarrassment rather than enthusiasm. Whatever impact they might have is nullified by the sheer reluctance of your team members to participate in them. However, there are some team-building activities that your people will actually enjoy. Some of these will take just a few minutes, some might take hours. A few will impact your communication, while others will improve collaboration skills.",
+    "county_name": "Bangladesh"
+  }
+]
