@@ -1,7 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import image from '../../assets/banner.png';
+import useTitle from '../../hooks/useTitle';
+import HomeServices from './HomeServices';
 
 const Home = () => {
+    useTitle('Home')
     return (
         <div className='mt-4'>
             <div className="lg:flex flex-row-reverse justify-center items-center">
@@ -13,6 +17,15 @@ const Home = () => {
                     </p>
                 </div>
             </div>
+            <div className="my-4 mx-2 grid">
+                <p className="lg:text-5xl text-gray-800 mb-14 lg:ml-32">
+                    <span className="border-b-4 border-gray-600">Discover</span> my services
+                </p>
+                <HomeServices/>
+                <button className="px-2 py-2 mx-auto font-semibold rounded dark:bg-sky-400 text-white"><Link to='/services'>View All Services</Link></button>
+            </div>
+            
+
         </div>
     );
 };
