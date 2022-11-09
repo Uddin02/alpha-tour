@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Image from "../../../assets/login.png";
 import logo from "../../../assets/New Project.png";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
@@ -22,6 +23,11 @@ const Signup = () => {
         createUser(email, password)
         .then(result => {
             const user = result.user;
+            Swal.fire(
+              "Registration Successful",
+              "Thanks!",
+              "success"
+            );
             handleUpdateUserProfile( name, photoURL );
             navigate("/")
             console.log(user);

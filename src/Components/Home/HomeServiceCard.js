@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeServiceCard = ({service}) => {
-    const { description, duration, price, service_img, service_name } = service;
+    const { _id, description, duration, price, service_img, service_name } = service;
     // console.log(service);
     return (
         <div className="card card-compact rounded-md w-96 bg-base-100 shadow-xl">
@@ -14,7 +14,7 @@ const HomeServiceCard = ({service}) => {
                 <div className='flex items-center justify-between'>
                     <p className='text-lg text-sky-500 font-semibold'>Duration: {duration}</p>
                     {/* <Link to={`/checkout/${_id}`} className="text-red-600 text-lg"><FaAngleDoubleRight/></Link> */}
-                    <button className="px-2 py-2 font-semibold rounded dark:bg-sky-400 text-white"><Link to=''>View Details</Link></button> 
+                    <button className="px-2 py-2 font-semibold rounded dark:bg-sky-400 text-white"><Link to={`/services/${_id}`}>View Details</Link></button> 
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-gray-50 ">
+    <div className="bg-[#e3eafe]">
       <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -76,18 +76,18 @@ const NavBar = () => {
               </NavLink>
             </li>
 
-            <li class='dropdown dropdown-hover dropdown-end'>
+            <li className='dropdown dropdown-hover dropdown-end'>
                 <label
-                  tabindex='0'
+                  tabIndex='0'
 
                 >
                   {
-                    user ? <div><img style={{ width: '40px', height: '40px' }} className=' rounded-full cursor-pointer' src={user.photoURL} alt='userPhoto' /></div> : <Link className="font-medium text-gray-700" to='/login'>Login</Link>
+                    user ? <div><img style={{ width: '45px', height: '45px' }} className=' rounded-full cursor-pointer' src={user.photoURL} alt='userPhoto' /></div> : <Link className="font-medium text-gray-700" to='/login'>Login</Link>
                   }
                 </label>
                 {
                   user ? (<ul
-                    tabindex='0'
+                    tabIndex='0'
                     className='dropdown-content menu p-2 bg-[#ebf0ff] shadow rounded-box w-48'
                   >
                     <li>
