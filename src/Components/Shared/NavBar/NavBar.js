@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { FaUserAlt } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import Images from "../../../assets/New Project.png";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
@@ -76,52 +76,31 @@ const NavBar = () => {
               </NavLink>
             </li>
 
-            <li>
-              <div className="flex items-center space-x-8 font-medium  text-gray-700">
-                {user?.photoURL ? (
-                  <div
-                    className="tooltip tooltip-bottom"
-                    data-tip={user?.displayName}
-                  >
-                    <img
-                      style={{ height: "45px" }}
-                      className="rounded-full cursor-pointer"
-                      src={user?.photoURL}
-                      alt=""
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="tooltip tooltip-bottom"
-                    data-tip={user?.displayName}
-                  >
-                    <FaUserAlt className="text-sky-400 cursor-pointer"></FaUserAlt>
-                  </div>
-                )}
+            <li class='dropdown dropdown-hover dropdown-end'>
+                <label
+                  tabindex='0'
 
-                <>
-                  {user?.uid ? (
-                    <>
-                      {/* <span className="tooltip tooltip-bottom"
-                        data-tip={user?.displayName}>{user?.displayName}</span> */}
-                      <button
-                        onClick={handleLogOut}
-                        variant="light"
-                        className=""
-                      >
-                        Logout
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <Link className="text-decoration-none pe-2" to="/login">
-                        Login
-                      </Link>
-                    </>
-                  )}
-                </>
-              </div>
-            </li>    
+                >
+                  {
+                    user ? <div><img style={{ width: '40px', height: '40px' }} className=' rounded-full cursor-pointer' src={user.photoURL} alt='userPhoto' /></div> : <Link className="font-medium text-gray-700" to='/login'>Login</Link>
+                  }
+                </label>
+                {
+                  user ? (<ul
+                    tabindex='0'
+                    className='dropdown-content menu p-2 bg-[#ebf0ff] shadow rounded-box w-48'
+                  >
+                    <li>
+                      <p className="mx-auto font-bold"> {user?.displayName}</p>
+                    </li>
+                    <li>
+                      <>{user ? <p  className=" mx-auto font-medium text-gray-700" onClick={handleLogOut}><FaSignOutAlt/> Logout</p> : <Link className="font-medium text-gray-700" to="/login">Login</Link>}</>
+                    </li>
+                  </ul>) : (
+                    <p></p>
+                  )
+                }
+              </li>    
 
           </ul>
           <div className="lg:hidden">

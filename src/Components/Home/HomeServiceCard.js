@@ -9,7 +9,7 @@ const HomeServiceCard = ({service}) => {
             <figure><img className='rounded-t-md' src={service_img} alt="service_img" /></figure>
             <div className="card-body p-2">
                 <h2 className="card-title font-bold text-2xl  text-gray-800">{service_name}</h2>
-                <h2 className="card-title text-md text-justify text-gray-600 mt-2">{description.slice(0,100)+'... Read more'}</h2>
+                <h2 className="card-title text-sm text-justify text-gray-600 mt-2">{description.slice(0,100)+'... Read more'}</h2>
                 <p className='text-lg text-sky-500 font-semibold mt-2'>Price: {price}</p>
                 <div className='flex items-center justify-between'>
                     <p className='text-lg text-sky-500 font-semibold'>Duration: {duration}</p>
