@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FaUserAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import Images from "../../../assets/New Project.png";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const NavBar = () => {
  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then(() => {
-  //       // Sign-out successful.
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => console.error(error));
+  };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 ">
       <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link
@@ -73,6 +75,54 @@ const NavBar = () => {
                 Blog
               </NavLink>
             </li>
+
+            <li>
+              <div className="flex items-center space-x-8 font-medium  text-gray-700">
+                {user?.photoURL ? (
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip={user?.displayName}
+                  >
+                    <img
+                      style={{ height: "45px" }}
+                      className="rounded-full cursor-pointer"
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className="tooltip tooltip-bottom"
+                    data-tip={user?.displayName}
+                  >
+                    <FaUserAlt className="text-sky-400 cursor-pointer"></FaUserAlt>
+                  </div>
+                )}
+
+                <>
+                  {user?.uid ? (
+                    <>
+                      {/* <span className="tooltip tooltip-bottom"
+                        data-tip={user?.displayName}>{user?.displayName}</span> */}
+                      <button
+                        onClick={handleLogOut}
+                        variant="light"
+                        className=""
+                      >
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link className="text-decoration-none pe-2" to="/login">
+                        Login
+                      </Link>
+                    </>
+                  )}
+                </>
+              </div>
+            </li>    
+
           </ul>
           <div className="lg:hidden">
             <button

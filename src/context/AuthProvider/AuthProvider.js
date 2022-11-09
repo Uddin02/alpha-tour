@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../../firebase/firebase.config';
 
@@ -10,7 +10,6 @@ const AuthProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
     
     const providerLogin = (provider) => {
         setLoading(true);
@@ -31,17 +30,14 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser, profile);
     }
 
-    const verifyEmail = () =>{
-        return sendEmailVerification(auth.currentUser);
-    }
-
     const signInWithGoogle = () => {
         return signInWithPopup (auth, googleProvider);
      }
     
-    const signInWithGithub = () => {
-        return signInWithPopup (auth, githubProvider);
-     }
+
+    const forgetPassword = email =>{
+        return sendPasswordResetEmail(auth, email)
+    }
 
     const logOut = () =>{
         setLoading(true);
@@ -49,23 +45,18 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(() =>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
-             console.log('user state changed', currentUser);
-             // setUser(currentUser)
-             
-             if(currentUser === null || currentUser.emailVerified){
-                 setUser(currentUser);
-             }
-             
-             setLoading(false)
-         });
- 
-         return () => {
-             unsubscribe();
-         }
+        const unsubscribe = onAuthStateChanged(auth, currentUser =>{
+            console.log(currentUser);
+            setUser(currentUser);
+            setLoading(false)
+        });
+
+        return () =>{
+            return unsubscribe();
+        }
      }, [])
 
-    const authInfo = { user, setUser, loading, setLoading, createUser, signIn, signInWithGoogle, signInWithGithub, updateUserProfile, verifyEmail, providerLogin, logOut};
+    const authInfo = { user, setUser, loading, setLoading, createUser, signIn, signInWithGoogle, updateUserProfile, forgetPassword, providerLogin, logOut};
     
     return (
         <AuthContext.Provider value={authInfo}>
