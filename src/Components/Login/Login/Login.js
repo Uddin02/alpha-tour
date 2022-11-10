@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import Image from "../../../assets/login.png";
 import Logo from "../../../assets/New Project.png";
@@ -25,9 +26,9 @@ const Login = () => {
         setUser(user);
         console.log(user);
         navigate(from, { replace: true });
-        alert.success("Login successful");
+        toast.success("Login successful");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => toast.error(error));
   };
 
   const handleSubmit = (event) => {
@@ -46,7 +47,7 @@ const Login = () => {
         }
 
         // get jwt token
-        fetch('http://localhost:5000/jwt', {
+        fetch('https://alpha-tour-server.vercel.app/jwt', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -55,9 +56,10 @@ const Login = () => {
         })
         .then(res=> res.json())
         .then(data => {
-          console.log(data);
+          // console.log(data);
           localStorage.setItem('alphaToken', data.token);
           navigate(from, { replace: true });
+          toast.success("Login successful");
         })
         form.reset(); 
       })

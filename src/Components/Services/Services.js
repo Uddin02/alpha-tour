@@ -13,7 +13,7 @@ const Services = () => {
     },[])
 
     useEffect( () =>{
-        fetch('http://localhost:5000/allServices')
+        fetch('https://alpha-tour-server.vercel.app/allServices')
         .then(res =>res.json())
         .then(data => {
             setServices(data)

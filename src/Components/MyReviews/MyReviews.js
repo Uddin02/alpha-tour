@@ -13,7 +13,7 @@ const MyReviews = () => {
     // console.log(myReviews);
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/review?email=${user?.email}`, {
+        fetch(`https://alpha-tour-server.vercel.app/review?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('alphaToken')}`
             }
@@ -33,7 +33,7 @@ const MyReviews = () => {
         const proceed = window.confirm('Are you sure you want to remove this review!!');
         
         if(proceed){
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://alpha-tour-server.vercel.app/review/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

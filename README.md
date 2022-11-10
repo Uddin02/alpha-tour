@@ -1,6 +1,17 @@
+# Alpha Tour
+
+### Live link --> https://alpha-tour-e6555.web.app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+- This project is created based on the MEARN stack.
+- In this project i display the six services which are loaded by the custom api.
+- You can give a review and update the review which is done in backend.
+- In this project i used jwt token to validate the user.
+- Moreover the data of this project is sorted through the MongoDB sort by field ascending order.
+- And this project is fully resposive for small, medium & large devices.
 
 ## Available Scripts
 
