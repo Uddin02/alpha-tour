@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import image from '../../../assets/Feedback.png';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
@@ -9,22 +9,24 @@ const AddReview = () => {
 
         // const { user } = useContext(AuthContext);
     
-        const {_id} = useLoaderData()
-        // console.log(_id);
+        const { _id, service_name} = useLoaderData()
+        // console.log(_id,service_name);
     
         const handlePlaceOrder = event =>{
             event.preventDefault();
             const form = event.target;
             const name = user?.displayName ;
             const image = user?.photoURL;
-            // const email = user?.email || 'uregistered';
+            const email = user?.email || 'uregistered';
             const message = form.message.value;
             
             const review = {
                 id: _id,
                 name,
                 review: message,
-                image
+                image,
+                email,
+                service_name
             }
        
             fetch('http://localhost:5000/reviews/', {
@@ -59,6 +61,10 @@ const AddReview = () => {
                     <input id="name" type="text" placeholder="" className="w-full p-3 rounded dark:bg-gray-600" defaultValue={user?.displayName} readOnly />
                 </div>
                 <div>
+                    <label htmlFor="email" className="text-sm">Email</label>
+                    <input id="email" type="email" placeholder="" className="w-full p-3 rounded dark:bg-gray-600" defaultValue={user?.email} readOnly />
+                </div>
+                <div>
                     <label htmlFor="text" className="text-sm">Image Url</label>
                     <input id="text" type="text" className="w-full p-3 rounded dark:bg-gray-600" defaultValue={user?.photoURL} readOnly />
                 </div>
@@ -66,7 +72,11 @@ const AddReview = () => {
                     <label htmlFor="message" className="text-sm">Feedback</label>
                     <textarea id="message" rows="3" className="w-full p-3 rounded dark:bg-gray-600"></textarea>
                 </div>
-                <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-gray-700 dark:text-gray-200">Send Feedback</button>
+                {
+                    user?.uid ? <button type="submit" className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-gray-700 dark:text-gray-200">Send Feedback</button>
+                    :
+                    <h3 className="font-bold text-lg">Please <Link to='/login' className='underline'>Login</Link> to add a review</h3>
+                }
             </form>
         </div>
     );

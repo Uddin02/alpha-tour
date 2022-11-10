@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
 
     if(loading){
         // return  <Spinner animation="border" variant="primary" />
-        return <div><p>Loading...</p></div>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full mx-auto animate-spin dark:border-gray-800">Loading...</div>
     }
  
     if(!user){

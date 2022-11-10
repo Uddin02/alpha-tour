@@ -76,6 +76,46 @@ const NavBar = () => {
               </NavLink>
             </li>
 
+            <li>
+
+                {
+                  user?.uid ? <NavLink
+                  to="/addServices"
+                  aria-label="addServices"
+                  title="addServices"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-medium tracking-wide text-blue-400 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  }
+                >
+                  Add Services
+                  </NavLink> 
+                  : <></>
+                }
+
+            </li>
+            
+            <li>
+
+                {
+                  user?.uid ? <NavLink
+                  to="/myReviews"
+                  aria-label="myReviews"
+                  title="myReviews"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-medium tracking-wide text-blue-400 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  }
+                >
+                  My reviews
+                  </NavLink> 
+                  : <></>
+                }
+
+            </li>
+
             <li className='dropdown dropdown-hover dropdown-end'>
                 <label
                   tabIndex='0'
