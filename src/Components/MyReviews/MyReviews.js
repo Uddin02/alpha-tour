@@ -1,21 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import MyReviewCards from './MyReviewCards';
 
 
 const MyReviews = () => {
-
-    const {user} = useContext(AuthContext);
+    useTitle('My reviews')
+    const { user, logOut } = useContext(AuthContext);
 
     const [myReviews, setMyReviews] = useState([])
     // console.log(myReviews);
     
     useEffect(()=>{
-        fetch(`http://localhost:5000/review?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setMyReviews(data))
-    },[user?.email])
+        fetch(`http://localhost:5000/review?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('alphaToken')}`
+            }
+        })
+        .then(res => {
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
+            return res.json();
+        })
+        .then(data => {
+            setMyReviews(data);
+        })
+   }, [user?.email, logOut])
 
     const handleDelete = id =>{
         const proceed = window.confirm('Are you sure you want to remove this review!!');

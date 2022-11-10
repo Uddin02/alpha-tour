@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/New Project.png";
 
 const Footer = () => {
+  
   return (
     <div>
       <footer className="px-4 divide-y bg-[#e3eafe]">
