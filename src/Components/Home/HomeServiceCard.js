@@ -7,6 +7,7 @@ const HomeServiceCard = ({service}) => {
     return (
         <div className="card card-compact rounded-md w-96 bg-base-100 shadow-xl">
             <figure><img className='rounded-t-md' src={service_img} alt="service_img" /></figure>
+
             <div className="card-body p-2">
                 <h2 className="card-title font-bold text-2xl  text-gray-800">{service_name}</h2>
                 <h2 className="card-title text-sm text-justify text-gray-600 mt-2">{description.slice(0,100)+'... Read more'}</h2>
